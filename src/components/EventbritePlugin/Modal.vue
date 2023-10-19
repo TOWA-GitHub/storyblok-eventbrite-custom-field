@@ -39,8 +39,10 @@
 
     <h3 v-if="isLoading">Loading...</h3>
 
+    <h3 v-if="error">{{ error }}</h3>
+
     <!-- Event list -->
-    <ul class="event-list" v-if="!isLoading">
+    <ul class="event-list" v-if="!isLoading && events?.length">
       <li
         :class="{
           'item-card__selected': selectedEvent && selectedEvent.id === event.id
@@ -52,6 +54,7 @@
         <Event :event="event" />
       </li>
     </ul>
+    <h3 v-else-if="!isLoading && !error">No events found</h3>
   </div>
 </template>
 
@@ -78,7 +81,8 @@ const baseUrl = "https://www.eventbriteapi.com/v3";
 // TODO: should API Token be saved in plugin config or frontend?
 const apiToken = plugin.data.options.apiToken;
 
-const isLoading = ref(false);
+const isLoading = ref<boolean>(false);
+const error = ref<string | null>(null);
 
 // TODO: add types
 const events = ref<any[]>([]);
@@ -100,10 +104,18 @@ const fetchEventsOfOrganization = (event: Event) => {
   })
     .then(res => {
       events.value = res.data.events;
+      error.value = null;
+
       isLoading.value = false;
 
-      // pagination can be found in res.data
+      // TODO: pagination can be found in res.data
       // Eventbrite supports https://www.eventbrite.com/platform/api#/reference/event/list/list-events-by-organization
+    })
+    .catch(err => {
+      events.value = [];
+      error.value = err.response.data.error_description;
+
+      isLoading.value = false;
     });
 };
 
@@ -119,6 +131,14 @@ onMounted(() => {
   })
     .then(res => {
       organizations.value = res.data.organizations;
+      error.value = null;
+    
+      isLoading.value = false;
+    })
+    .catch(err => {
+      organizations.value = [];
+      error.value = err.response.data.error_description;
+
       isLoading.value = false;
     });
 })
