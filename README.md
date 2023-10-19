@@ -11,6 +11,8 @@ If you prefer to use the Options API, you can refer to [the Vue 2 template](http
 
 ## Usage
 
+Find [Eventbrite private token](https://www.eventbrite.com/account-settings/apps). Create API keys if you don't have.
+
 For development, run the application locally with
 
 ```shell
@@ -18,6 +20,8 @@ npm run dev
 ```
 
 and open the [Sandbox](https://plugin-sandbox.storyblok.com/field-plugin/).
+
+Under `Options`, create a new option `apiToken` and assign your Eventbrite private token.
 
 To build the project, run
 
