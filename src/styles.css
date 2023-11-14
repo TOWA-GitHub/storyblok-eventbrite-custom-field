@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-html {
-  overflow: hidden;
-}
-
 :root {
   /*Storyblok colors*/
   --sb_green: #00b3b0;
@@ -41,13 +37,18 @@ html {
   --light_25: #f7f8f9;
   --light_gray: #b1b5be;
   --black: #101525;
+  --black_75: #3c3f43;
+  --black_50: #686b6f;
+  --black_25: #94979b;
   --white: #fff;
+
+  --gap: 1rem;
+  --image-size: 10rem;
+  --transition-base: 300ms ease-in-out;
 
   font-family: 'Roboto', sans-serif;
   font-style: normal;
-  line-height: 1.5;
   font-weight: 400;
-  font-size: 1rem;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -55,13 +56,61 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-#app {
-  width: 100%;
+/* CSS Reset */
+
+body {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
 }
 
-/*Element Styles*/
-body {
+* {
   margin: 0;
-  display: flex;
+  padding: 0;
   box-sizing: border-box;
+}
+
+/* Typography */
+
+.text-title {
+  font-size: 2rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: inherit;
+}
+
+.text-subtitle {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.06ch;
+  color: inherit;
+}
+
+.text-body,
+.text-link {
+  font-size: 1.8rem;
+  line-height: 1.25;
+  font-weight: 300;
+  color: inherit;
+}
+
+.text-link {
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.text-caption {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: inherit;
+}
+
+.text-danger {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--red);
 }

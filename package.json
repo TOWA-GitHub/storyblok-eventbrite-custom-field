@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "deploy": "npm run build && npx @storyblok/field-plugin-cli@beta deploy"
   },
   "dependencies": {
+    "@storyblok/design-system": "^3.19.3",
     "@storyblok/field-plugin": "0.0.1-beta.4",
     "axios": "^1.5.1",
     "vue": "^3.2.47"

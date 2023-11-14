@@ -1,6 +1,7 @@
 # env files except for .env.local.example
 .env
 .env.*
+!.env.production
 !.env.local.example
 
 # Logs
