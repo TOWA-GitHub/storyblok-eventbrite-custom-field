@@ -19,7 +19,7 @@ const updateEvent = (): void => {
 }
 
 const updateLabel = (): void => {
-  actions.setContent({ ...content, buttonLabel })
+  actions.setContent({ ...content, buttonLabel: buttonLabel.value })
 }
 
 watch(selectedEvent, updateEvent)
